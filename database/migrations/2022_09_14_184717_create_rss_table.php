@@ -12,13 +12,9 @@ return new class extends Migration {
      */
     public function up(): void
     {
-        Schema::create('news', function (Blueprint $table) {
+        Schema::create('rss', function (Blueprint $table) {
             $table->id()->autoIncrement();
-            $table->string('title')->nullable(false);
-            $table->string('link')->nullable(false);
-            $table->string('desc')->nullable(false);
-            $table->string('category')->nullable(false);
-            $table->Date('pubDate')->nullable(false);
+            $table->string('rssLink')->unique();
         });
     }
 
@@ -29,6 +25,6 @@ return new class extends Migration {
      */
     public function down(): void
     {
-        Schema::dropIfExists('news');
+        Schema::dropIfExists('rss');
     }
 };

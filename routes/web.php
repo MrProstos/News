@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,3 +19,4 @@ Route::middleware(['web'])->group(function () {
 });
 
 Route::view('/login/', 'login')->name('login');
+Route::get('/test/', [\App\Http\Controllers\NewsController::class, 'test']);

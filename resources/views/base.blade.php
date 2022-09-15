@@ -8,21 +8,21 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.1/dist/js.cookie.min.js"></script>
-    <title>Новости</title>
+    <title>{{ $page }}</title>
 </head>
 <body>
 <div class="columns is-mobile is-centered">
     <div class="column is-10 is-half">
         <div class="up-panel">
             <article class="panel is-info">
-                <p class="panel-heading">Новости</p>
+                <p class="panel-heading">{{ $page }}</p>
                 <p class="panel-tabs is-size-5">
                     @switch($page)
-                        @case('news')
+                        @case('Новости')
                             <a class="tab__news is-active" href="/">Новости</a>
                             <a class="tab__sources" href="/src">Источники</a>
                             @break
-                        @case('src')
+                        @case('Источники')
                             <a class="tab__news" href="/">Новости</a>
                             <a class="tab__sources is-active" href="/src">Источники</a>
                             @break
@@ -44,8 +44,11 @@
                         <input class="input is-primary" type="text" placeholder="Поиск">
                         <span class="icon is-left"><i class="fas fa-search" aria-hidden="true"></i></span>
                     </p>
+                    <a class="button is-info" href="/rss">общий RSS поток</a>
                 </div>
+
             </article>
         </div>
+        @yield('body')
     </div>
 </div>

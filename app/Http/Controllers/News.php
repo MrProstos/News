@@ -18,7 +18,7 @@ class News extends Controller
     {
         return view('news', [
             'news' => DB::table('news')->orderBy('pubDate', 'desc')->paginate(10),
-            'page' => 'news'
+            'page' => 'Новости'
         ]);
     }
 }

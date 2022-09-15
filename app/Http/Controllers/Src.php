@@ -11,11 +11,14 @@ use Illuminate\Support\Facades\DB;
 class Src extends Controller
 {
     /**
-     * Show news
+     * Show sources
      * @return Application|Factory|View
      */
     public function index(): Application|Factory|View
     {
-        return view('src', ['page' => 'src']);
+        return view('src', [
+            'rss' => DB::table('rss')->paginate(10),
+            'page' => 'Источники'
+        ]);
     }
 }

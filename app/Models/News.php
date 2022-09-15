@@ -15,4 +15,14 @@ class News extends Model
      * @var bool
      */
     public $incrementing = true;
+
+    /**
+     * Get 20 records sorted by date
+     * @return array
+     */
+    public function getSortData(): array
+    {
+        return News::query()->select(['title', 'link', 'desc', 'category', 'pubDate'])->
+        orderBy('pubDate', 'desc')->take(20)->get()->toArray();
+    }
 }

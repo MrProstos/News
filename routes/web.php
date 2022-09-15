@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use \App\Http\Controllers\News;
+use \App\Http\Controllers\Src;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,8 +17,6 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::middleware(['web'])->group(function () {
-    Route::view('/', 'news');
+    Route::get('/', [News::class, 'index']);
+    Route::get('/src', [Src::class, 'index']);
 });
-
-Route::view('/login/', 'login')->name('login');
-Route::get('/test/', [\App\Http\Controllers\NewsController::class, 'test']);

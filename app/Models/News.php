@@ -10,17 +10,9 @@ class News extends Model
     use HasFactory;
 
     /**
-     * Указывает, что идентификаторы модели являются автоинкрементными.
+     * Indicates that the model IDs are autoincrement.
      *
      * @var bool
      */
-    public $incrementing = false;
-
-    /**
-     * Следует ли обрабатывать временные метки модели.
-     *
-     * @var bool
-     */
-    public $timestamps = false;
-
+    public $incrementing = true;
 }

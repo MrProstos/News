@@ -14,6 +14,7 @@ return new class extends Migration {
     {
         Schema::create('rss', function (Blueprint $table) {
             $table->id()->autoIncrement();
+            $table->string('creator')->unique();
             $table->string('rssLink')->unique();
         });
     }

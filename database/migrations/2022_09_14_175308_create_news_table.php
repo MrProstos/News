@@ -14,9 +14,9 @@ return new class extends Migration {
     {
         Schema::create('news', function (Blueprint $table) {
             $table->id()->autoIncrement();
-            $table->string('title')->nullable(false);
-            $table->string('link')->nullable(false);
-            $table->string('desc')->nullable(false);
+            $table->text('title')->nullable(false);
+            $table->string('link')->nullable(false)->unique();
+            $table->text('desc')->nullable(false);
             $table->string('category')->nullable(false);
             $table->Date('pubDate')->nullable(false);
         });

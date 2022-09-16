@@ -14,11 +14,15 @@ return new class extends Migration {
     {
         Schema::create('news', function (Blueprint $table) {
             $table->id()->autoIncrement();
+            $table->unsignedBigInteger('creatorId');
+            $table->foreign('creatorId')->references('id')->on('rss')->onDelete('cascade');
             $table->text('title')->nullable(false);
             $table->string('link')->nullable(false)->unique();
             $table->text('desc')->nullable(false);
             $table->string('category')->nullable(false);
             $table->Date('pubDate')->nullable(false);
+
+
         });
     }
 

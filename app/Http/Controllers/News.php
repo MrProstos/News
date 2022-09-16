@@ -6,7 +6,7 @@ namespace App\Http\Controllers;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
-use Illuminate\Support\Facades\DB;
+
 
 class News extends Controller
 {
@@ -16,8 +16,10 @@ class News extends Controller
      */
     public function index(): Application|Factory|View
     {
+        $src = new \App\Http\Controllers\Src();
         return view('news', [
-            'news' => DB::table('news')->orderBy('pubDate', 'desc')->paginate(10),
+            'news' => \App\Models\News::query()->orderBy('pubDate', 'desc')->paginate(10),
+            'srcList' => $src->scrList(),
             'page' => 'Новости'
         ]);
     }

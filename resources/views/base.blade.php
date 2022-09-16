@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="{{ asset('/css/style.css') }}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.js"></script>
@@ -28,14 +27,20 @@
                             @break
                     @endswitch
                 </p>
-                <script></script>
                 <div class="panel-block">
                     <input class="input column" type="date">
                     <input class="input column" type="date">
                     <div class="select is-info">
-                        <select>
-                            <option>Select dropdown</option>
-                            <option>With options</option>
+
+                        <select class="select__source" id="selector">
+                            <option>Выберите источник</option>
+                            @php
+                                $src = new \App\Http\Controllers\Src();
+                                $srcList = $src->scrList()
+                            @endphp
+                            @foreach($srcList as $item)
+                                <option>{{ $item['creator'] }}</option>
+                            @endforeach
                         </select>
                     </div>
                 </div>

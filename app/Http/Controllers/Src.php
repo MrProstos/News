@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Rss;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
+
 
 class Src extends Controller
 {
@@ -16,9 +16,15 @@ class Src extends Controller
      */
     public function index(): Application|Factory|View
     {
+        $news = new \App\Models\News();
         return view('src', [
-            'rss' => DB::table('rss')->paginate(10),
+            'rss' => $news->getCreatorInfo()->paginate(10),
             'page' => 'Источники'
         ]);
+    }
+
+    public function scrList(): array
+    {
+        return Rss::all(['creator'])->toArray();
     }
 }

@@ -22,3 +22,5 @@ Route::middleware(['web'])->group(function () {
     Route::get('/src', [Src::class, 'index']);
     Route::get('/rss', [SharedRss::class, 'index']);
 });
+
+Route::get('/src/list/', [Src::class, 'scrList']);

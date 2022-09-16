@@ -11,8 +11,10 @@
                         </figure>
                     </div>
                     <div class="media-content">
-                        <a href="{{ $item->rssLink }}"><p
-                                class="_title is-size-5 is-striped">{{ $item->creator }}</p></a>
+                        <div class="button is-info is-size-5">{{ $item->creator }}</div>
+                        <div>Количество статей {{ $item->cnt }}</div>
+                        <div>Дата последней публикации: {{ $item->lastPubDate }}</div>
+                        <div><a href="{{ $item->rssLink }}">{{ $item->rssLink }}</a></div>
                     </div>
                 </div>
             </div>

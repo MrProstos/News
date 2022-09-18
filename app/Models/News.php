@@ -11,6 +11,10 @@ class News extends Model
 {
     use HasFactory;
 
+    const ALL_CREATOR = '%';
+    const START_DATE = '2000-01-01';
+    const END_DATE = '2100-01-01';
+
     /**
      * Indicates that the model IDs are autoincrement.
      *
@@ -19,10 +23,10 @@ class News extends Model
     public $incrementing = true;
 
     /**
-     * Get 20 records sorted by date
+     * Get 20 records
      * @return array
      */
-    public function getSortData(): array
+    public function getData(): array
     {
         return self::query()->select(['title', 'link', 'desc', 'category', 'pubDate'])->
         orderBy('pubDate', 'desc')->take(20)->get()->toArray();
@@ -39,5 +43,27 @@ class News extends Model
             ->select('rss.creator', 'rss.rssLink', DB::raw("COUNT(creatorId) as cnt"), DB::raw("MAX(pubDate) as lastPubDate"))
             ->join('rss', 'news.creatorId', '=', 'rss.id')
             ->groupBy('rss.creator');
+    }
+
+    /**
+     * Get data for a specific creator
+     * @param string|null $creator /name of the creator
+     * @param string|null $startData /filter for the beginning of publications
+     * @param string|null $endData /filter the end of publications
+     * @return Builder
+     */
+    public function getFilterData(string $creator = null,
+                                  string $startData = null,
+                                  string $endData = null): builder
+    {
+        $creator = $creator === null ? self::ALL_CREATOR : $creator;
+        $startData = $startData === null ? self::START_DATE : $startData;
+        $endData = $endData === null ? self::END_DATE : $endData;
+
+        return self::query()
+            ->select('*')
+            ->join('rss', 'news.creatorId', '=', 'rss.id')
+            ->where('rss.creator', 'like', $creator)
+            ->whereBetween('news.pubDate', [$startData, $endData])->orderByDesc('pubDate');
     }
 }

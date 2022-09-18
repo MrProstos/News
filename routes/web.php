@@ -18,9 +18,7 @@ use \App\Http\Controllers\SharedRss;
 
 
 Route::middleware(['web'])->group(function () {
-    Route::get('/', [News::class, 'index']);
+    Route::get('/news/{creator?}', [News::class, 'index']);
     Route::get('/src', [Src::class, 'index']);
     Route::get('/rss', [SharedRss::class, 'index']);
 });
-
-Route::get('/src/list/', [Src::class, 'scrList']);

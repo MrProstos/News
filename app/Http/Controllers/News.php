@@ -2,23 +2,33 @@
 
 namespace App\Http\Controllers;
 
-
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
+use Psr\Container\ContainerExceptionInterface;
+use Psr\Container\NotFoundExceptionInterface;
 
 
 class News extends Controller
 {
     /**
-     * Show news
+     * Show all news
+     * @param null $creator
      * @return Application|Factory|View
      */
-    public function index(): Application|Factory|View
+    public function index($creator = null): View|Factory|Application
     {
-        $src = new \App\Http\Controllers\Src();
+        $news = new \App\Models\News();
+        $src = new Src();
+
+        $startDate = request()->get('startDate');
+        $endDate = request()->get('endDate');
+
         return view('news', [
-            'news' => \App\Models\News::query()->orderBy('pubDate', 'desc')->paginate(10),
+            'news' => $news
+                ->getFilterData($creator, $startDate, $endDate)
+                ->paginate(10)
+                ->appends(request()->query()),
             'srcList' => $src->scrList(),
             'page' => 'Новости'
         ]);

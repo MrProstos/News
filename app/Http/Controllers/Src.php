@@ -43,6 +43,10 @@ class Src extends Controller
         return response()->json(['creator' => $creator]);
     }
 
+    /**
+     * Get creators list
+     * @return array
+     */
     public function scrList(): array
     {
         return Rss::all(['creator'])->toArray();

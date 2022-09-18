@@ -18,6 +18,7 @@ function searchAction()
     })
 }
 
+// Send post data
 function addCreator()
 {
     let data = $('.form__creator-add').serializeArray()

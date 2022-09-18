@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Rss;
+
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
-
+use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
 
 class Src extends Controller
 {
@@ -21,6 +23,32 @@ class Src extends Controller
             'rss' => $news->getCreatorInfo()->paginate(10),
             'page' => 'Источники'
         ]);
+    }
+
+    /**
+     * @param Request $request
+     * @return JsonResponse
+     */
+    public function add(Request $request): JsonResponse
+    {
+
+        $request->validate([
+            'URL' => [
+                'URL',
+                'required',
+                'regex:/https:\/\/\w+\.(\w+).\w+\/rss|https:\/\/(\w+).\w+\/rss/i',
+                'unique:App\Models\Rss,rssLink']
+        ]);
+
+        $URL = $request->get('URL');
+        $creator = preg_replace('/https:\/\/\w+\.(\w+)\.\w+\/[A-z.\/]+/', '$1', $URL);
+
+        $rssTable = new Rss();
+        $rssTable->creator = $creator;
+        $rssTable->rssLink = $URL;
+        $rssTable->save();
+
+        return response()->json(['creator' => $creator]);
     }
 
     public function scrList(): array

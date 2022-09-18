@@ -1,3 +1,6 @@
+'use strict'
+
+// Processing the search button click
 function searchAction()
 {
     $('.search__button').click(function () {
@@ -13,5 +16,22 @@ function searchAction()
         }
         window.location.href = `/news/${source}/?startDate=${startDate}&endDate=${endDate}&searchWord=${searchWord}`
     })
+}
 
+function addCreator()
+{
+    let data = $('.form__creator-add').serializeArray()
+
+    $.ajax({
+        url: '/src/add',
+        method: 'POST',
+        data: data,
+        success: function (data) {
+            alert('RSS поток ' + data['creator'] + ' добавлен')
+        },
+        error: function (data) {
+            let msg = JSON.parse(data.responseText)
+            alert(msg['message'])
+        }
+    })
 }

@@ -10,12 +10,7 @@ class Rss extends Model
 {
     use HasFactory;
 
-    /**
-     * Indicates that the model IDs are autoincrement.
-     *
-     * @var bool
-     */
-    public $incrementing = true;
+    public $timestamps = false;
 
     /**
      * Name table DB

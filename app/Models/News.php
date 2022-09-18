@@ -80,8 +80,7 @@ class News extends Model
                 ->whereIn('news.id', $sphinx->getSearchData($sphinxWord))
                 ->whereBetween('news.pubDate', [$startData, $endData])->orderByDesc('pubDate');
         }
-
-
+        
         return self::query()
             ->select('*')
             ->join('rss', 'news.creatorId', '=', 'rss.id')

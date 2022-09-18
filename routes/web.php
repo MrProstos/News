@@ -21,12 +21,10 @@ Route::redirect('/', '/news');
 Route::middleware(['web'])->group(function () {
     Route::get('/news/{creator?}', [News::class, 'index']);
     Route::get('/src', [Src::class, 'index']);
+    Route::post('/src/add', [Src::class, 'add']);
     Route::get('/rss', [SharedRss::class, 'index']);
 });
 
 Route::get('/test/', function () {
-    $sphinx = new \App\Models\Sphinx();
-    echo '<pre>';
-    print_r(array_values($sphinx->getSearchData('и')));
-    echo '</pre>';
+    return \App\Models\Rss::all();
 });

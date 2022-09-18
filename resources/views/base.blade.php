@@ -36,10 +36,6 @@
                         <div class="select is-info">
                             <select class="select__source" id="selector">
                                 <option class="default__select">Выберите источник</option>
-                                @php
-                                    $src = new \App\Http\Controllers\Src();
-                                    $srcList = $src->scrList()
-                                @endphp
                                 @foreach($srcList as $item)
                                     <option>{{ $item['creator'] }}</option>
                                 @endforeach

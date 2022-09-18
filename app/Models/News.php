@@ -40,7 +40,12 @@ class News extends Model
     public function getCreatorInfo(): Builder
     {
         return self::query()
-            ->select('rss.creator', 'rss.rssLink', DB::raw("COUNT(creatorId) as cnt"), DB::raw("MAX(pubDate) as lastPubDate"))
+            ->select(
+                'rss.creator',
+                'rss.rssLink',
+                DB::raw("COUNT(creatorId) as cnt"),
+                DB::raw("MAX(pubDate) as lastPubDate")
+            )
             ->join('rss', 'news.creatorId', '=', 'rss.id')
             ->groupBy('rss.creator');
     }
@@ -50,12 +55,15 @@ class News extends Model
      * @param string|null $creator /name of the creator
      * @param string|null $startData /filter for the beginning of publications
      * @param string|null $endData /filter the end of publications
+     * @param array|null $sphinxData
      * @return Builder
      */
-    public function getFilterData(string $creator = null,
-                                  string $startData = null,
-                                  string $endData = null): builder
-    {
+    public function getFilterData(
+        string $creator = null,
+        string $startData = null,
+        string $endData = null,
+        array  $sphinxData = null
+    ): builder {
         $creator = $creator === null ? self::ALL_CREATOR : $creator;
         $startData = $startData === null ? self::START_DATE : $startData;
         $endData = $endData === null ? self::END_DATE : $endData;

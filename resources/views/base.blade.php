@@ -48,7 +48,7 @@
                     </div>
                     <div class="panel-block">
                         <p class="control has-icons-left">
-                            <input class="input is-primary" type="text" placeholder="Поиск">
+                            <input class="input input__search is-primary" type="text" placeholder="Поиск">
                             <span class="icon is-left"><i class="fas fa-search" aria-hidden="true"></i></span>
                         </p>
                         <button class="button search__button is-info" type="submit">Поиск</button>

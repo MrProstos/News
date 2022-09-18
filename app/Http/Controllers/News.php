@@ -2,12 +2,10 @@
 
 namespace App\Http\Controllers;
 
+
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
-use Psr\Container\ContainerExceptionInterface;
-use Psr\Container\NotFoundExceptionInterface;
-
 
 class News extends Controller
 {
@@ -23,10 +21,11 @@ class News extends Controller
 
         $startDate = request()->get('startDate');
         $endDate = request()->get('endDate');
+        $searchWord = request()->get('searchWord');
 
         return view('news', [
             'news' => $news
-                ->getFilterData($creator, $startDate, $endDate)
+                ->getFilterData($creator, $startDate, $endDate, $searchWord)
                 ->paginate(10)
                 ->appends(request()->query()),
             'srcList' => $src->scrList(),

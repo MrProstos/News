@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3035c78b81ce63b98f4b724119a7280f",
+    "content-hash": "e256b6619e37d5569efdfba3eaa77ccf",
     "packages": [
         {
             "name": "bmatovu/laravel-xml",
@@ -1223,6 +1223,78 @@
             "time": "2022-07-29T21:33:30+00:00"
         },
         {
+            "name": "laravel/scout",
+            "version": "v9.4.10",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/laravel/scout.git",
+                "reference": "45c7222ccd8f5d8ee069a85deeef799b7dcd79fa"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/laravel/scout/zipball/45c7222ccd8f5d8ee069a85deeef799b7dcd79fa",
+                "reference": "45c7222ccd8f5d8ee069a85deeef799b7dcd79fa",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/bus": "^8.0|^9.0",
+                "illuminate/contracts": "^8.0|^9.0",
+                "illuminate/database": "^8.0|^9.0",
+                "illuminate/http": "^8.0|^9.0",
+                "illuminate/pagination": "^8.0|^9.0",
+                "illuminate/queue": "^8.0|^9.0",
+                "illuminate/support": "^8.0|^9.0",
+                "php": "^7.3|^8.0"
+            },
+            "require-dev": {
+                "meilisearch/meilisearch-php": "^0.19",
+                "mockery/mockery": "^1.0",
+                "orchestra/testbench": "^6.17|^7.0",
+                "phpunit/phpunit": "^9.3"
+            },
+            "suggest": {
+                "algolia/algoliasearch-client-php": "Required to use the Algolia engine (^3.2).",
+                "meilisearch/meilisearch-php": "Required to use the MeiliSearch engine (^0.23)."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "9.x-dev"
+                },
+                "laravel": {
+                    "providers": [
+                        "Laravel\\Scout\\ScoutServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Laravel\\Scout\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Taylor Otwell",
+                    "email": "taylor@laravel.com"
+                }
+            ],
+            "description": "Laravel Scout provides a driver based solution to searching your Eloquent models.",
+            "keywords": [
+                "algolia",
+                "laravel",
+                "search"
+            ],
+            "support": {
+                "issues": "https://github.com/laravel/scout/issues",
+                "source": "https://github.com/laravel/scout"
+            },
+            "time": "2022-07-19T14:34:57+00:00"
+        },
+        {
             "name": "laravel/serializable-closure",
             "version": "v1.2.2",
             "source": {
@@ -1540,16 +1612,16 @@
         },
         {
             "name": "league/flysystem",
-            "version": "3.3.0",
+            "version": "3.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/flysystem.git",
-                "reference": "d8295793b3e2f91aa39e1feb2d5bfce772891ae2"
+                "reference": "b7bb46dee497b57e0c378315f2a711824cb46c38"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/d8295793b3e2f91aa39e1feb2d5bfce772891ae2",
-                "reference": "d8295793b3e2f91aa39e1feb2d5bfce772891ae2",
+                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/b7bb46dee497b57e0c378315f2a711824cb46c38",
+                "reference": "b7bb46dee497b57e0c378315f2a711824cb46c38",
                 "shasum": ""
             },
             "require": {
@@ -1611,7 +1683,7 @@
             ],
             "support": {
                 "issues": "https://github.com/thephpleague/flysystem/issues",
-                "source": "https://github.com/thephpleague/flysystem/tree/3.3.0"
+                "source": "https://github.com/thephpleague/flysystem/tree/3.5.0"
             },
             "funding": [
                 {
@@ -1627,7 +1699,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-09-09T11:11:42+00:00"
+            "time": "2022-09-17T21:06:02+00:00"
         },
         {
             "name": "league/mime-type-detection",
@@ -2818,16 +2890,16 @@
         },
         {
             "name": "ramsey/uuid",
-            "version": "4.5.0",
+            "version": "4.5.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ramsey/uuid.git",
-                "reference": "ef842484ba57f163c6d465ab744bfecb872a11d4"
+                "reference": "a161a26d917604dc6d3aa25100fddf2556e9f35d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ramsey/uuid/zipball/ef842484ba57f163c6d465ab744bfecb872a11d4",
-                "reference": "ef842484ba57f163c6d465ab744bfecb872a11d4",
+                "url": "https://api.github.com/repos/ramsey/uuid/zipball/a161a26d917604dc6d3aa25100fddf2556e9f35d",
+                "reference": "a161a26d917604dc6d3aa25100fddf2556e9f35d",
                 "shasum": ""
             },
             "require": {
@@ -2896,7 +2968,7 @@
             ],
             "support": {
                 "issues": "https://github.com/ramsey/uuid/issues",
-                "source": "https://github.com/ramsey/uuid/tree/4.5.0"
+                "source": "https://github.com/ramsey/uuid/tree/4.5.1"
             },
             "funding": [
                 {
@@ -2908,7 +2980,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-09-15T01:44:53+00:00"
+            "time": "2022-09-16T03:22:46+00:00"
         },
         {
             "name": "symfony/console",
@@ -7584,27 +7656,27 @@
         },
         {
             "name": "spatie/laravel-ignition",
-            "version": "1.4.1",
+            "version": "1.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/laravel-ignition.git",
-                "reference": "29deea5d9cf921590184be6956e657c4f4566440"
+                "reference": "192962f4d84526f6868c512530c00633e3165749"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/laravel-ignition/zipball/29deea5d9cf921590184be6956e657c4f4566440",
-                "reference": "29deea5d9cf921590184be6956e657c4f4566440",
+                "url": "https://api.github.com/repos/spatie/laravel-ignition/zipball/192962f4d84526f6868c512530c00633e3165749",
+                "reference": "192962f4d84526f6868c512530c00633e3165749",
                 "shasum": ""
             },
             "require": {
                 "ext-curl": "*",
                 "ext-json": "*",
                 "ext-mbstring": "*",
-                "illuminate/support": "^8.77|^9.0",
+                "illuminate/support": "^8.77|^9.27",
                 "monolog/monolog": "^2.3",
                 "php": "^8.0",
                 "spatie/flare-client-php": "^1.0.1",
-                "spatie/ignition": "^1.2.4",
+                "spatie/ignition": "^1.4.1",
                 "symfony/console": "^5.0|^6.0",
                 "symfony/var-dumper": "^5.0|^6.0"
             },
@@ -7670,7 +7742,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2022-09-01T11:31:14+00:00"
+            "time": "2022-09-16T13:45:54+00:00"
         },
         {
             "name": "theseer/tokenizer",
@@ -7732,7 +7804,8 @@
         "php": "^8.0.2",
         "ext-dom": "*",
         "ext-libxml": "*",
-        "ext-simplexml": "*"
+        "ext-simplexml": "*",
+        "ext-pdo": "*"
     },
     "platform-dev": [],
     "plugin-api-version": "2.3.0"

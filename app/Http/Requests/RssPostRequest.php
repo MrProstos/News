@@ -14,7 +14,7 @@ class RssPostRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -31,6 +31,22 @@ class RssPostRequest extends FormRequest
                 'required',
                 'regex:/https:\/\/\w+\.(\w+).\w+\/rss|https:\/\/(\w+).\w+\/rss/i',
                 'unique:App\Models\Rss,rssLink']
+        ];
+    }
+
+    #[ArrayShape([
+        'URL.URL' => "string",
+        'URL.required' => "string",
+        'URL.regex' => "string",
+        'URL.unique' => "string"
+    ])]
+    public function messages(): array
+    {
+        return [
+            'URL.URL' => 'Это не URL',
+            'URL.required' => 'Поле URL обязательно',
+            'URL.regex' => 'URL не прошел валидацию',
+            'URL.unique' => 'Данный RSS поток уже добавлен'
         ];
     }
 }

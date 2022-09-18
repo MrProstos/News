@@ -24,7 +24,3 @@ Route::middleware(['web'])->group(function () {
     Route::post('/src/add', [Src::class, 'add']);
     Route::get('/rss', [SharedRss::class, 'index']);
 });
-
-Route::get('/test/', function () {
-    return \App\Models\Rss::all();
-});

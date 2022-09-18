@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\RssPostRequest;
 use App\Models\Rss;
 
 use Illuminate\Contracts\Foundation\Application;
@@ -26,20 +27,11 @@ class Src extends Controller
     }
 
     /**
-     * @param Request $request
+     * @param RssPostRequest $request
      * @return JsonResponse
      */
-    public function add(Request $request): JsonResponse
+    public function add(RssPostRequest $request): JsonResponse
     {
-
-        $request->validate([
-            'URL' => [
-                'URL',
-                'required',
-                'regex:/https:\/\/\w+\.(\w+).\w+\/rss|https:\/\/(\w+).\w+\/rss/i',
-                'unique:App\Models\Rss,rssLink']
-        ]);
-
         $URL = $request->get('URL');
         $creator = preg_replace('/https:\/\/\w+\.(\w+)\.\w+\/[A-z.\/]+/', '$1', $URL);
 

@@ -63,8 +63,7 @@ class News extends Model
         string $startData = null,
         string $endData = null,
         string  $sphinxWord = null
-    ): builder
-    {
+    ): builder {
         $creator = $creator === null ? self::ALL_CREATOR : $creator;
         $startData = $startData === null ? self::START_DATE : $startData;
         $endData = $endData === null ? self::END_DATE : $endData;

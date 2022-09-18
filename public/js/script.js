@@ -1,4 +1,5 @@
-function searchAction() {
+function searchAction()
+{
     $('.search__button').click(function () {
         let startDate = $('.input__startDate').val()
         let endDate = $('.input__endDate').val()

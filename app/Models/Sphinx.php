@@ -21,7 +21,7 @@ class Sphinx extends Model
      */
     public function getSearchData(string $word): array
     {
-        $data = DB::connection($this->connection)->select("SELECT id FROM news WHERE match('@title $word') LIMIT 30");
+        $data = DB::connection($this->connection)->select("SELECT id FROM news WHERE match('@title $word') LIMIT 300");
         $response = [];
 
         foreach ($data as $item) {

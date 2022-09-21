@@ -6,20 +6,27 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 
+/**
+ * @property mixed $creator
+ * @property mixed $rssLink
+ */
 class Rss extends Model
 {
     use HasFactory;
 
+    //TODO setHidden скрыть поля таблицы
     public $timestamps = false;
 
     /**
      * Name table DB
+     *
      * @var string
      */
     public $table = 'rss';
 
     /**
      * Parses Rss news
+     *
      * @return void
      */
     public function parseRssNews(): void
@@ -31,14 +38,16 @@ class Rss extends Model
             $data = json_decode(json_encode($rssString), true);
 
             foreach ($data['channel']['item'] as $datum) {
-                DB::table('news')->insertOrIgnore([
-                    'creatorId' => $item['id'],
-                    'title' => $datum['title'],
-                    'link' => $datum['link'],
-                    'desc' => $datum['description'],
-                    'category' => $datum['category'],
-                    'pubDate' => date('Y-m-d', strtotime($datum['pubDate']))
-                ]);
+                DB::table('news')->insertOrIgnore(
+                    [
+                        'creatorId' => $item['id'],
+                        'title' => $datum['title'],
+                        'link' => $datum['link'],
+                        'desc' => $datum['description'],
+                        'category' => $datum['category'],
+                        'pubDate' => date('Y-m-d', strtotime($datum['pubDate']))
+                    ] // TODO формат даты должен быть y-m-d h-m
+                );
             }
         }
     }

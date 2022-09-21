@@ -9,7 +9,6 @@ use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
 
 class Src extends Controller
 {
@@ -32,12 +31,12 @@ class Src extends Controller
      */
     public function add(RssPostRequest $request): JsonResponse
     {
-        $URL = $request->get('URL');
-        $creator = preg_replace('/https:\/\/\w+\.(\w+)\.\w+\/[A-z.\/]+/', '$1', $URL);
+        $url = $request->get('URL');
+        $creator = preg_replace('/https:\/\/\w+\.(\w+)\.\w+\/[A-z.\/]+/', '$1', $url);
 
         $rssTable = new Rss();
         $rssTable->creator = $creator;
-        $rssTable->rssLink = $URL;
+        $rssTable->rssLink = $url;
         $rssTable->save();
 
         return response()->json(['creator' => $creator]);

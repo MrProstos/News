@@ -1,9 +1,19 @@
 <?php
 
+/**
+ * Web Router
+ *
+ * @category Router
+ *
+ * @package Category
+ *
+ * @author vlad <vladmihin28@gmail.com>
+ */
+
 use Illuminate\Support\Facades\Route;
-use \App\Http\Controllers\News;
-use \App\Http\Controllers\Src;
-use \App\Http\Controllers\SharedRss;
+use App\Http\Controllers\News;
+use App\Http\Controllers\Src;
+use App\Http\Controllers\SharedRss;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,9 +28,11 @@ use \App\Http\Controllers\SharedRss;
 
 Route::redirect('/', '/news');
 
-Route::middleware(['web'])->group(function () {
-    Route::get('/news/{creator?}', [News::class, 'index']);
-    Route::get('/src', [Src::class, 'index']);
-    Route::post('/src/add', [Src::class, 'add']);
-    Route::get('/rss', [SharedRss::class, 'index']);
-});
+Route::middleware(['web'])->group(
+    function () {
+        Route::get('/news/{creator?}', [News::class, 'index']);
+        Route::get('/src', [Src::class, 'index']);
+        Route::post('/src/add', [Src::class, 'add']);
+        Route::get('/rss', [SharedRss::class, 'index']);
+    }
+);

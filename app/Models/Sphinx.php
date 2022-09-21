@@ -16,12 +16,14 @@ class Sphinx extends Model
 
     /**
      * Search for indexed data via Sphinx
+     *
      * @param string $word Keyword or part of a word
      * @return array
      */
     public function getSearchData(string $word): array
     {
-        $data = DB::connection($this->connection)->select("SELECT id FROM news WHERE match('@title $word') LIMIT 300");
+        $data = DB::connection($this->connection)
+        ->select("SELECT id FROM news WHERE match('@title $word') LIMIT 300");
         $response = [];
 
         foreach ($data as $item) {

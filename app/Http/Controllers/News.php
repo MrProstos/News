@@ -2,15 +2,17 @@
 
 namespace App\Http\Controllers;
 
-
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
+use Psr\Container\ContainerExceptionInterface;
+use Psr\Container\NotFoundExceptionInterface;
 
 class News extends Controller
 {
     /**
      * Show all news
+     *
      * @param null $creator
      * @return Application|Factory|View
      */

@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\MemcachedServer;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
-use Psr\Container\ContainerExceptionInterface;
-use Psr\Container\NotFoundExceptionInterface;
 
 class News extends Controller
 {

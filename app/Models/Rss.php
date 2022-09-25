@@ -46,7 +46,7 @@ class Rss extends Model
                         'desc' => $datum['description'],
                         'category' => $datum['category'],
                         'pubDate' => date('Y-m-d', strtotime($datum['pubDate']))
-                    ] // TODO формат даты должен быть y-m-d h-m
+                    ]
                 );
             }
         }

@@ -37,7 +37,6 @@ class News extends Model
             ->toArray();
     }
 
-
     /**
      * Get information about the sources of RSS descendants
      * @return Builder
@@ -52,7 +51,7 @@ class News extends Model
                 DB::raw("MAX(pubDate) as lastPubDate")
             )
             ->join('rss', 'news.creatorId', '=', 'rss.id')
-            ->groupBy('rss.creator');
+            ->groupBy('rss.creator', 'rss.rssLink');
     }
 
     /**
@@ -70,7 +69,7 @@ class News extends Model
         string $startData = null,
         string $endData = null,
         string $sphinxWord = null
-    ): builder {
+    ): Builder {
         $creator = $creator === null ? self::ALL_CREATOR : $creator;
         $startData = $startData === null ? self::START_DATE : $startData;
         $endData = $endData === null ? self::END_DATE : $endData;

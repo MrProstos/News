@@ -14,6 +14,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\News;
 use App\Http\Controllers\Src;
 use App\Http\Controllers\SharedRss;
+use App\Http\Middleware\Authenticate;
+use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\LoginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,10 +29,15 @@ use App\Http\Controllers\SharedRss;
 |
 */
 
-Route::redirect('/', '/news');
+Route::get('/signIn', [LoginController::class, 'index'])->name('login');
+Route::post('/signIn/check', [LoginController::class, 'login']);
 
-Route::middleware(['web'])->group(
+Route::get('/signUp', [RegisterController::class, 'index']);
+Route::post('/signUp/registration', [RegisterController::class, 'register']);
+
+Route::middleware(['user-access','auth'])->group(
     function () {
+        Route::redirect('/', '/news');
         Route::get('/news/{creator?}', [News::class, 'index']);
         Route::get('/src', [Src::class, 'index']);
         Route::post('/src/add', [Src::class, 'add']);

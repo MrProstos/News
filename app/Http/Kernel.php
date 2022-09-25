@@ -2,9 +2,10 @@
 
 namespace App\Http;
 
-use App\Http\Middleware\Memcached;
+use App\Http\Middleware\Authenticate;
 use App\Http\Middleware\NewsValidUrl;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
+use Memcached;
 
 class Kernel extends HttpKernel
 {
@@ -55,6 +56,7 @@ class Kernel extends HttpKernel
      * @var array<string, class-string|string>
      */
     protected $routeMiddleware = [
+        'user-access' => \App\Http\Middleware\UserAccess::class,
         'memcached' => Memcached::class,
         'newsValidUrl' => NewsValidUrl::class,
         'auth' => \App\Http\Middleware\Authenticate::class,

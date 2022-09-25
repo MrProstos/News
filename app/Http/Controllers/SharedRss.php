@@ -15,13 +15,14 @@ class SharedRss extends Controller
     {
         $mem = new MemcachedServer();
         $rss = $mem->get('rss');
-        if ($rss === null) {
+        if (!$rss) {
             $newDb = new News();
             $xmlData = $newDb->getData();
-            $mem->set('rss', $xmlData, 300);
+            $mem->set('rss', $xmlData, null, 300);
 
             return response()->xml(['item' => $xmlData]);
         }
+
         return response()->xml(['item' => $rss]);
     }
 }

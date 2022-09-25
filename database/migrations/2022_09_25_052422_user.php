@@ -13,17 +13,15 @@ return new class () extends Migration {
     public function up(): void
     {
         Schema::create(
-            'news',
+            'user',
             function (Blueprint $table) {
                 $table->id()->autoIncrement();
-                $table->unsignedBigInteger('creatorId');
-                $table->foreign('creatorId')->references('id')->on('rss')
-                    ->onDelete('cascade');
-                $table->text('title')->nullable(false);
-                $table->string('link')->nullable(false)->unique();
-                $table->text('desc')->nullable(false);
-                $table->string('category')->nullable(false);
-                $table->Date('pubDate')->nullable(false);
+                $table->string('email')->unique();
+                $table->string('username')->unique();
+                $table->timestamp('email_verified_at')->nullable();
+                $table->string('password');
+                $table->rememberToken();
+                $table->timestamps();
             }
         );
     }
@@ -35,6 +33,6 @@ return new class () extends Migration {
      */
     public function down(): void
     {
-        Schema::dropIfExists('news');
+        Schema::dropIfExists('user');
     }
 };

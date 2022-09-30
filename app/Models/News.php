@@ -69,7 +69,8 @@ class News extends Model
         string $startData = null,
         string $endData = null,
         string $sphinxWord = null
-    ): Builder {
+    ): Builder
+    {
         $creator = $creator === null ? self::ALL_CREATOR : $creator;
         $startData = $startData === null ? self::START_DATE : $startData;
         $endData = $endData === null ? self::END_DATE : $endData;
@@ -91,5 +92,10 @@ class News extends Model
             ->join('rss', 'news.creatorId', '=', 'rss.id')
             ->where('rss.creator', 'like', $creator)
             ->whereBetween('news.pubDate', [$startData, $endData])->orderByDesc('pubDate');
+    }
+
+    public function test(\Illuminate\Database\Eloquent\Builder $query)
+    {
+        return $query->get(['title']);
     }
 }

@@ -28,6 +28,7 @@ use App\Http\Controllers\LoginController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::redirect('/', '/news');
 
 Route::get('/signIn', [LoginController::class, 'index'])->name('login');
 Route::post('/signIn/check', [LoginController::class, 'login']);
@@ -35,9 +36,8 @@ Route::post('/signIn/check', [LoginController::class, 'login']);
 Route::get('/signUp', [RegisterController::class, 'index']);
 Route::post('/signUp/registration', [RegisterController::class, 'register']);
 
-Route::middleware(['user-access','auth'])->group(
+Route::middleware(['user-access', 'auth'])->group(
     function () {
-        Route::redirect('/', '/news');
         Route::get('/news/{creator?}', [News::class, 'index']);
         Route::get('/src', [Src::class, 'index']);
         Route::post('/src/add', [Src::class, 'add']);
